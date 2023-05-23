@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum gameType {
+enum GameType {
     case single, bot, peer, undetermined
     
     var description: String {
