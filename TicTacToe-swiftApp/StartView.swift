@@ -60,6 +60,8 @@ struct StartView: View {
             
         }
         .padding()
+        .navigationTitle("Tic Tac Toe")
+        .inNavigationStack()
     }
 }
 
