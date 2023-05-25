@@ -12,6 +12,7 @@ struct StartView: View {
     @State private var yourName = ""
     @State private var opponentName = ""
     @FocusState private var focus: Bool
+    @State private var StartGame = false
     var body: some View {
         VStack {
             Picker("Select game type ",  selection: $gameType) {
@@ -22,7 +23,6 @@ struct StartView: View {
             }
             .padding()
             .background(RoundedRectangle(cornerRadius: 10, style: .continuous).stroke(lineWidth: 2))
-            .accentColor(.accentColor)
             Text(gameType.description)
                 .padding()
             VStack {
@@ -48,6 +48,7 @@ struct StartView: View {
             if gameType != .peer {
                 Button("Start game") {
                     focus = false
+                    StartGame.toggle()
                 }
                 .buttonStyle(.borderedProminent)
                 .disabled (
@@ -61,6 +62,9 @@ struct StartView: View {
         }
         .padding()
         .navigationTitle("Tic Tac Toe")
+        .fullScreenCover(isPresented: $StartGame){
+            GameView()
+        }
         .inNavigationStack()
     }
 }

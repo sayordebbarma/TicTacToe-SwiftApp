@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		281DA0AB2A1FA464009CCBD9 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281DA0AA2A1FA464009CCBD9 /* GameView.swift */; };
 		284EE3F12A1BAFC00022DB29 /* TicTacToe_swiftAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284EE3F02A1BAFC00022DB29 /* TicTacToe_swiftAppApp.swift */; };
 		284EE3F32A1BAFC00022DB29 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284EE3F22A1BAFC00022DB29 /* StartView.swift */; };
 		284EE3F52A1BAFC10022DB29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 284EE3F42A1BAFC10022DB29 /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		281DA0AA2A1FA464009CCBD9 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		284EE3ED2A1BAFC00022DB29 /* TicTacToe-swiftApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TicTacToe-swiftApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		284EE3F02A1BAFC00022DB29 /* TicTacToe_swiftAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToe_swiftAppApp.swift; sourceTree = "<group>"; };
 		284EE3F22A1BAFC00022DB29 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
@@ -38,6 +40,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		281DA0A72A1FA441009CCBD9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				281DA0AA2A1FA464009CCBD9 /* GameView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		284EE3E42A1BAFC00022DB29 = {
 			isa = PBXGroup;
 			children = (
@@ -59,6 +69,7 @@
 			children = (
 				284EE3F02A1BAFC00022DB29 /* TicTacToe_swiftAppApp.swift */,
 				284EE3F22A1BAFC00022DB29 /* StartView.swift */,
+				281DA0A72A1FA441009CCBD9 /* Views */,
 				2883C7472A1E4431002AB549 /* Utilities */,
 				284EE4002A1BB45F0022DB29 /* Models */,
 				284EE3FE2A1BB2080022DB29 /* LaunchScreen.storyboard */,
@@ -167,6 +178,7 @@
 				284EE4022A1BB48F0022DB29 /* GameModels.swift in Sources */,
 				284EE3F12A1BAFC00022DB29 /* TicTacToe_swiftAppApp.swift in Sources */,
 				2883C7492A1E444F002AB549 /* ViewModifier.swift in Sources */,
+				281DA0AB2A1FA464009CCBD9 /* GameView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
