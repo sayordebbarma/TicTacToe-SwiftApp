@@ -8,10 +8,29 @@
 import SwiftUI
 
 struct GameView: View {
+    @EnvironmentObject var game: GameService
     @Environment(\.dismiss) var dismiss
     var body: some View {
         VStack {
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            if [game.player1.isCurrect, game.player2.isCurrect].allSatisfy({$0 == false}) { // $0 == false to check both player are false
+                Text("Select players")
+                HStack {
+                    Button(game.player1.name) {
+                        game.player1.isCurrect = true
+                    }
+                    .padding(10)
+                    .background(
+                        RoundedRectangle(cornerRadius: 10)
+                        .fill(game.player1.isCurrect ? Color.green : Color.gray)
+                    )
+                    .foregroundColor(.white)
+                    Button(game.player2.name) {
+                        game.player2.isCurrect = true
+                    }
+                }
+                .disabled(game.gameStarted)
+                Spacer()
+            }
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -29,5 +48,6 @@ struct GameView: View {
 struct GameView_Previews: PreviewProvider {
     static var previews: some View {
         GameView()
+            .environmentObject(GameService())
     }
 }
