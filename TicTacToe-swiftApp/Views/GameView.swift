@@ -12,21 +12,18 @@ struct GameView: View {
     @Environment(\.dismiss) var dismiss
     var body: some View {
         VStack {
-            if [game.player1.isCurrect, game.player2.isCurrect].allSatisfy({$0 == false}) { // $0 == false to check both player are false
+            if [game.player1.isCurrent, game.player2.isCurrent].allSatisfy({$0 == false}) {
+                // $0 == false to check both player are false
                 Text("Select players")
                 HStack {
                     Button(game.player1.name) {
-                        game.player1.isCurrect = true
+                        game.player1.isCurrent = true
                     }
-                    .padding(10)
-                    .background(
-                        RoundedRectangle(cornerRadius: 10)
-                        .fill(game.player1.isCurrect ? Color.green : Color.gray)
-                    )
-                    .foregroundColor(.white)
+                    .buttonStyle(playerButtonStyle(isCurrent: game.player1.isCurrent))
                     Button(game.player2.name) {
-                        game.player2.isCurrect = true
+                        game.player2.isCurrent = true
                     }
+                    .buttonStyle(playerButtonStyle(isCurrent: game.player2.isCurrent))
                 }
                 .disabled(game.gameStarted)
                 Spacer()
@@ -49,5 +46,18 @@ struct GameView_Previews: PreviewProvider {
     static var previews: some View {
         GameView()
             .environmentObject(GameService())
+    }
+}
+
+struct playerButtonStyle: ButtonStyle {
+    let isCurrent: Bool
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .padding(10)
+            .background(
+                RoundedRectangle(cornerRadius: 10)
+                .fill(isCurrent ? Color.green : Color.gray)
+            )
+            .foregroundColor(.white)
     }
 }

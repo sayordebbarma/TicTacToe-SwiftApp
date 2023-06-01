@@ -35,7 +35,7 @@ struct Player {
     let gamePiece: GamePiece
     var name: String
     var moves: [Int] = []
-    var isCurrect = false
+    var isCurrent = false
     var isWinner: Bool {
         for moves in Move.winningMoves {
             if moves.allSatisfy(moves.contains) {

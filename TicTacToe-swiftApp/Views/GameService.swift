@@ -18,7 +18,7 @@ class GameService: ObservableObject {
     var gameType = GameType.single
     
     var currentPlayer: Player {
-        if player1.isCurrect {
+        if player1.isCurrent {
             return player1
         } else {
             return player2
@@ -26,7 +26,7 @@ class GameService: ObservableObject {
     }
     
     var gameStarted: Bool {
-        player1.isCurrect || player2.isCurrect
+        player1.isCurrent || player2.isCurrent
     }
     
     var boardDisabled: Bool {
@@ -49,8 +49,8 @@ class GameService: ObservableObject {
     }
     
     func resetGame() {
-        player1.isCurrect = false
-        player2.isCurrect = false
+        player1.isCurrent = false
+        player2.isCurrent = false
         movesTaken.removeAll()
         player1.moves.removeAll()
         player2.moves.removeAll()
