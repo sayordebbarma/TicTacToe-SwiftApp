@@ -14,6 +14,7 @@ class GameService: ObservableObject {
     @Published var possibleMoves = Move.all
     @Published var movesTaken = [Int]()
     @Published var gameOver = false
+    @Published var gameBoard = GameSquare.reset
     
     var gameType = GameType.single
     
@@ -48,7 +49,7 @@ class GameService: ObservableObject {
         player1.name = player1Name
     }
     
-    func resetGame() {
+    func reset() {
         player1.isCurrent = false
         player2.isCurrent = false
         movesTaken.removeAll()
@@ -56,6 +57,16 @@ class GameService: ObservableObject {
         player2.moves.removeAll()
         gameOver = false
         possibleMoves = Move.all
+        gameBoard = GameSquare.reset
+    }
     
+    func updateMoves(index: Int) {
+        if player1.isCurrent {
+            player1.moves.append(index + 1)
+            gameBoard[index].player = player1
+        } else {
+            player2.moves.append(index + 1)
+            gameBoard[index].player = player2
+        }
     }
 }

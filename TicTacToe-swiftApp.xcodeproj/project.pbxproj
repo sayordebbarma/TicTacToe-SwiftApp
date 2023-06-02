@@ -14,6 +14,7 @@
 		284EE3F82A1BAFC10022DB29 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 284EE3F72A1BAFC10022DB29 /* Preview Assets.xcassets */; };
 		284EE3FF2A1BB2080022DB29 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 284EE3FE2A1BB2080022DB29 /* LaunchScreen.storyboard */; };
 		284EE4022A1BB48F0022DB29 /* GameModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284EE4012A1BB48F0022DB29 /* GameModels.swift */; };
+		287065172A2A52B800FEAF3D /* GameSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287065162A2A52B800FEAF3D /* GameSquare.swift */; };
 		2883C7492A1E444F002AB549 /* ViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2883C7482A1E444F002AB549 /* ViewModifier.swift */; };
 		28952A432A26710E00D51C6F /* GameService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28952A422A26710E00D51C6F /* GameService.swift */; };
 /* End PBXBuildFile section */
@@ -27,6 +28,7 @@
 		284EE3F72A1BAFC10022DB29 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		284EE3FE2A1BB2080022DB29 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		284EE4012A1BB48F0022DB29 /* GameModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModels.swift; sourceTree = "<group>"; };
+		287065162A2A52B800FEAF3D /* GameSquare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSquare.swift; sourceTree = "<group>"; };
 		2883C7482A1E444F002AB549 /* ViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifier.swift; sourceTree = "<group>"; };
 		28952A422A26710E00D51C6F /* GameService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -47,6 +49,7 @@
 			children = (
 				281DA0AA2A1FA464009CCBD9 /* GameView.swift */,
 				28952A422A26710E00D51C6F /* GameService.swift */,
+				287065162A2A52B800FEAF3D /* GameSquare.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 				28952A432A26710E00D51C6F /* GameService.swift in Sources */,
 				2883C7492A1E444F002AB549 /* ViewModifier.swift in Sources */,
 				281DA0AB2A1FA464009CCBD9 /* GameView.swift in Sources */,
+				287065172A2A52B800FEAF3D /* GameSquare.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
