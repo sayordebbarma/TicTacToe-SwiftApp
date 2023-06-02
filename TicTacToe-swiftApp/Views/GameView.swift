@@ -26,6 +26,23 @@ struct GameView: View {
                     .buttonStyle(playerButtonStyle(isCurrent: game.player2.isCurrent))
                 }
                 .disabled(game.gameStarted)
+                VStack {
+                    HStack {
+                        ForEach(0...2, id: \.self) { index in
+                            SquareView(index: index)
+                        }
+                    }
+                    HStack {
+                        ForEach(0...2, id: \.self) { index in
+                            SquareView(index: index)
+                        }
+                    }
+                    HStack {
+                        ForEach(0...2, id: \.self) { index in
+                            SquareView(index: index)
+                        }
+                    }
+                }
                 Spacer()
             }
         }
