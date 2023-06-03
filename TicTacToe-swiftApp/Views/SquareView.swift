@@ -12,6 +12,7 @@ struct SquareView: View {
     let index: Int
     var body: some View {
         Button {
+            game.makeMove(at: index)
             
         } label: {
             game.gameBoard[index].image

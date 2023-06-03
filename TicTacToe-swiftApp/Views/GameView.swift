@@ -43,6 +43,22 @@ struct GameView: View {
                         }
                     }
                 }
+                .disabled(game.boardDisabled)
+                VStack {
+                    if game.gameOver {
+                        Text("Game Over :(")
+                        if game.possibleMoves.isEmpty {
+                            Text("Nobody Wins ;(")
+                        } else {
+                            Text("\(game.currentPlayer.name) Wins^^")
+                        }
+                        Button("New Match") {
+                            game.reset()
+                        }
+                        .buttonStyle(.borderedProminent)
+                    }
+                }
+                .font(.largeTitle)
                 Spacer()
             }
         }

@@ -5,7 +5,7 @@
 //  Created by Sayor Debbarma on 30/05/23.
 //
 
-import Foundation
+import SwiftUI
 
 @MainActor
 class GameService: ObservableObject {
@@ -67,6 +67,35 @@ class GameService: ObservableObject {
         } else {
             player2.moves.append(index + 1)
             gameBoard[index].player = player2
+        }
+    }
+    
+    func checkIfWinner() {
+        if player1.isWinner || player2.isWinner {
+            gameOver =  true
+        }
+    }
+    
+    func toggleCurrent() {
+        player1.isCurrent.toggle()
+        player2.isCurrent.toggle()
+    }
+    
+    func makeMove(at index: Int) {
+        if gameBoard[index].player == nil {
+            withAnimation {
+                updateMoves(index: index)
+            }
+            checkIfWinner()
+            if !gameOver {
+                if let matchingIndex = possibleMoves.firstIndex(where: {$0 == (index + 1)}) {
+                    possibleMoves.remove(at: matchingIndex)
+                }
+                toggleCurrent()
+            }
+            if possibleMoves.isEmpty {
+                gameOver = true
+            }
         }
     }
 }
