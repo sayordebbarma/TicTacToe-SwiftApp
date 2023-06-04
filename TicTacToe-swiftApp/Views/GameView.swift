@@ -71,6 +71,9 @@ struct GameView: View {
             }
         }
         .navigationTitle("Tic Tac Toe")
+        .onAppear {
+            game.reset()
+        }
         .inNavigationStack()
     }
 }

@@ -10,7 +10,7 @@ import SwiftUI
 @MainActor
 class GameService: ObservableObject {
     @Published var player1 = Player(gamePiece: .x, name: "Player 1")
-    @Published var player2 = Player(gamePiece: .x, name: "Player 2")
+    @Published var player2 = Player(gamePiece: .o, name: "Player 2")
     @Published var possibleMoves = Move.all
     @Published var movesTaken = [Int]()
     @Published var gameOver = false
