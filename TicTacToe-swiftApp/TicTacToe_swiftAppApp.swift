@@ -9,11 +9,16 @@ import SwiftUI
 
 @main
 struct TicTacToe_swiftAppApp: App {
+    @AppStorage("yourName") var yourName = ""
     @StateObject var game = GameService()
     var body: some Scene {
         WindowGroup {
-            StartView()
-                .environmentObject(game)
+            if yourName.isEmpty {
+                yourNameView()
+            } else {
+                StartView(yourName: yourName)
+                    .environmentObject(game)
+            }
         }
     }
 }

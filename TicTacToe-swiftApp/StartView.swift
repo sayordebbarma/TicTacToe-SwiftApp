@@ -10,10 +10,13 @@ import SwiftUI
 struct StartView: View {
     @EnvironmentObject var game: GameService
     @State private var gameType: GameType = .undetermined
-    @State private var yourName = ""
+    @AppStorage("yourName") var yourName = ""
     @State private var opponentName = ""
     @FocusState private var focus: Bool
     @State private var StartGame = false
+    init(yourName: String) {
+        self.yourName = yourName
+    }
     var body: some View {
         VStack {
             Picker("Select game type ",  selection: $gameType) {
@@ -29,12 +32,9 @@ struct StartView: View {
             VStack {
                 switch gameType {
                 case .single:
-                    VStack {
-                        TextField("Your name: ", text: $yourName)
                         TextField("Opponent name: ", text: $opponentName)
-                    }
                 case .bot:
-                    TextField("Your name: ", text: $yourName)
+                    EmptyView()
                 case .peer:
                     EmptyView()
                 case .undetermined:
@@ -54,8 +54,7 @@ struct StartView: View {
                 }
                 .buttonStyle(.borderedProminent)
                 .disabled (
-                    gameType == .undetermined || gameType == .bot && yourName.isEmpty ||
-                    gameType == .single && (yourName.isEmpty || opponentName.isEmpty)
+                    gameType == .undetermined || gameType == .single && opponentName.isEmpty
                 )
                 //Image()
             }
@@ -73,7 +72,7 @@ struct StartView: View {
 
 struct StratView_Previews: PreviewProvider {
     static var previews: some View {
-        StartView()
+        StartView(yourName: "yourName")
             .environmentObject(GameService())
     }
 }
