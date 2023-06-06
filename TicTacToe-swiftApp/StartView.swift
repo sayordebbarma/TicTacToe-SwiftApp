@@ -14,6 +14,8 @@ struct StartView: View {
     @State private var opponentName = ""
     @FocusState private var focus: Bool
     @State private var StartGame = false
+    @State private var changeName = false
+    @State private var newName = ""
     init(yourName: String) {
         self.yourName = yourName
     }
@@ -57,6 +59,11 @@ struct StartView: View {
                     gameType == .undetermined || gameType == .single && opponentName.isEmpty
                 )
                 //Image()
+                Text("My current name is \(yourName)")
+                Button("Change my name") {
+                    changeName.toggle()
+                }
+                .buttonStyle(.bordered)
             }
             Spacer()
             
@@ -66,6 +73,16 @@ struct StartView: View {
         .fullScreenCover(isPresented: $StartGame){
             GameView()
         }
+        .alert("Change Name", isPresented: $changeName, actions: {
+            TextField("New name", text: $newName)
+            Button("OK", role: .destructive) {
+                yourName = newName
+                exit(-1)
+            }
+            Button("Cancel", role: .cancel) {}
+        }, message: {
+            Text("Tap OK to change your name")
+        })
         .inNavigationStack()
     }
 }
