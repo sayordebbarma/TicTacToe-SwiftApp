@@ -17,6 +17,12 @@ class MPConnectionManager: NSObject, ObservableObject {
     let myPeerId: MCPeerID
     let nearbyServiceAdvertiser: MCNearbyServiceAdvertiser
     let nearbyServiceBrowser: MCNearbyServiceBrowser
+    
+    let game: GameService
+    func setup(game: GameService) {
+        self.game = game
+    }
+    
     @Published var availablePeers = [MCPeerID]()
     @Published var receiveInvite: Bool = false
     @Published var receiveInviteForm: MCPeerID?
@@ -60,6 +66,18 @@ class MPConnectionManager: NSObject, ObservableObject {
     func stopBrowsing() {
         nearbyServiceBrowser.stopBrowsingForPeers()
         availablePeers.removeAll()
+    }
+    
+    func send(gameMove: MPGameMove) {
+        if !session.connectedPeers.isEmpty {
+            do {
+                if let data = gameMove.data() {
+                    try session.send(data, toPeers: session.connectedPeers, with: .reliable)
+                }
+            } catch {
+                print("Error sending: \(error)")
+            }
+        }
     }
 }
 
@@ -112,7 +130,23 @@ extension MPConnectionManager: MCSessionDelegate {
     }
     
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
-        <#code#>
+        if let gameMove = try? JSONDecoder().decode(MPGameMove.self, from: data) {
+            DispatchQueue.main.async {
+                switch gameMove.action {
+                case .start:
+                    break
+                case .move:
+                    if let index = gameMove.index {
+                        self.game.makeMove(at: index)
+                    }
+                case .end:
+                    self.session.disconnect()
+                    self.isAvailableToPlay = true
+                case .reset:
+                    self.game.reset()
+                }
+            }
+        }
     }
     
     func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
