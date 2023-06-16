@@ -15,9 +15,11 @@ struct StartView: View {
     @FocusState private var focus: Bool
     @State private var StartGame = false
     @State private var changeName = false
+    @StateObject var connectionManager: MPConnectionManager
     @State private var newName = ""
     init(yourName: String) {
         self.yourName = yourName
+        _connectionManager = StateObject(wrappedValue: MPConnectionManager(yourName: yourName))
     }
     var body: some View {
         VStack {
@@ -72,6 +74,7 @@ struct StartView: View {
         .navigationTitle("Tic Tac Toe")
         .fullScreenCover(isPresented: $StartGame){
             GameView()
+                .environmentObject(connectionManager)
         }
         .alert("Change Name", isPresented: $changeName, actions: {
             TextField("New name", text: $newName)

@@ -18,7 +18,7 @@ class MPConnectionManager: NSObject, ObservableObject {
     let nearbyServiceAdvertiser: MCNearbyServiceAdvertiser
     let nearbyServiceBrowser: MCNearbyServiceBrowser
     
-    let game: GameService
+    var game: GameService
     func setup(game: GameService) {
         self.game = game
     }
