@@ -26,7 +26,23 @@ struct MPPeersView: View {
                     }
                     .buttonStyle(.borderedProminent)
                 }
-                
+                .alert("Received invitation from \(connectionManager.receiveInviteForm?.displayName ?? "Unknown")", isPresented: $connectionManager.receiveInvite) {
+                    Button("Accept") {
+                        if let invitationHandler = connectionManager.invitationHandler {
+                            invitationHandler(true, connectionManager.session)
+                            game.player1.name = connectionManager.receiveInviteForm?.displayName ?? "Unknown"
+                            game.player2.name = connectionManager.myPeerId.displayName
+                            game.gameType = .peer
+                            
+                        }
+                    }
+                    Button("Reject") {
+                        if let invitationHandler = connectionManager.invitationHandler {
+                            invitationHandler(false, nil)
+                        }
+                        
+                    }
+                }
             }
         }
     }
